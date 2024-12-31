@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,html{
+    margin: 0px;
+    padding: 0px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+:root {
+  --primary: #4f46e5; 
+  --secondary: #6366f1; 
+  --background-light: #f9fafb; 
+  --background-dark: #1f2937; 
+  --text-light: #1f2937; 
+  --text-dark: #f9fafb; 
+  --border-light: #e5e7eb; 
+  --border-dark: #374151; 
+  --muted-light: #9ca3af; 
+  --muted-dark: #d1d5db;
+}
+
+body.light {
+  --bg-color: var(--background-light);
+  --text-color: var(--text-light);
+  --border-color: var(--border-light);
+  --muted-color: var(--muted-light);
+}
+
+body.dark {
+  --bg-color: var(--background-dark);
+  --text-color: var(--text-dark);
+  --border-color: var(--border-dark);
+  --muted-color: var(--muted-dark);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button, input, textarea {
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.muted {
+  color: var(--muted-color);
+}
