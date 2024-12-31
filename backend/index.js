@@ -14,29 +14,27 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // Allow access from any subdomain ending with .vercel.app
-// const allowedOriginPattern = /^https:\/\/.*\.vercel.app$/;
+const allowedOriginPattern = /^https:\/\/.*\.vercel.app$/;
 
-// const corsOptions = {
-//   origin: (origin, callback) => {
-//     if (allowedOriginPattern.test(origin) || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//   allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
-//   credentials: true,
-//   enablePreflight: true
-// };
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOriginPattern.test(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ["Content-Type", "Authorization", "Access-Control-Allow-Methods", "Access-Control-Request-Headers"],
+  credentials: true,
+  enablePreflight: true
+};
 
 // Use CORS middleware with the configured options
-// app.use(cors(corsOptions));
-app.use(cors())
+app.use(cors(corsOptions));
 
 // Handle preflight requests explicitly
-// app.options('*', cors(corsOptions));
-app.options('*', cors());
+app.options('*', cors(corsOptions));
 
 app.all('', (req, res) => {
   res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
