@@ -36,6 +36,15 @@ const ProductList = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  if (products.length === 0) {
+    return (
+      <div className="mt-16 p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
+        <h1 className="text-3xl font-bold text-gray-800
+          dark:text-gray-100">Loading...</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="mt-16 p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
       <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6 flex items-center justify-between">
